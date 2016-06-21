@@ -18,7 +18,7 @@ var Schema = mongoose.Schema;
 require('mongoose-currency').loadType(mongoose);
 var Currency = mongoose.Types.Currency;
 
-promotionSchema = new Schema({
+var promotionSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -27,9 +27,8 @@ promotionSchema = new Schema({
         type: String,
         required: true
     },
-    lable: {
+    label: {
         type: String,
-        required: true,
         default: ''
     },
     price: {
