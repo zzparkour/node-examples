@@ -39,7 +39,7 @@ var leaderShipSchema = new Schema({
         required: true
     }
 
-});
+}, {timestamp: true});
 var Leadership = mongoose.model('Leader', leaderShipSchema);
 
 module.exports = Leadership;

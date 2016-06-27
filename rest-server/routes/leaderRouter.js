@@ -23,7 +23,7 @@ leaderRouter.route('/')
             res.json(leader);
         });
     })
-    .pos(function (req, res, next) {
+    .post(function (req, res, next) {
         Leadership.create(req.body, function (err, leader) {
             if (err) {
                 throw err;
@@ -68,7 +68,7 @@ leaderRouter.route('/:leadershipId')
         });
     })
     .delete(function (req, res, next) {
-        Leadership.findByIdAndRemove(req.params.dishId, function (err, resp) {
+        Leadership.findByIdAndRemove(req.params.leadershipId, function (err, resp) {
             if (err) {
                 throw err;
             }

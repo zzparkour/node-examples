@@ -43,29 +43,9 @@ promoRouter.route('/')
             res.json(resp);
         })
     });
-
-promoRouter.route('/:promotionId')
-    .all(function (req, res, next) {
-        res.writeHead(200, {'Content-Type': 'text/plain'});
-        next();
-    })
-
-    .get(function (req, res, next) {
-        res.end('Will send details of the promotion: ' + req.params.promotionId + ' to you!');
-    })
-
-    .put(function (req, res, next) {
-        res.write('Updating the promotion: ' + req.params.promotionId + '\n');
-        res.end('Will update the promotion: ' + req.body.name +
-            ' with details: ' + req.body.description);
-    })
-
-    .delete(function (req, res, next) {
-        res.end('Deleting promotion: ' + req.params.promotionId);
-    });
 promoRouter.route('/:promotionId')
     .get(function (req, res, next) {
-        Promotion.findById(req.params.dishId, function (err, promotion) {
+        Promotion.findById(req.params.promotionId, function (err, promotion) {
             if (err) {
                 throw err;
             }
@@ -90,7 +70,7 @@ promoRouter.route('/:promotionId')
                 throw err
             }
             res.json(resp);
-        })
+        });
     });
 
 module.exports = promoRouter;
