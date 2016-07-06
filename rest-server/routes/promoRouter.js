@@ -16,7 +16,7 @@ promoRouter.route('/')
     .get(function (req, res, next) {
         Promotion.find({}, function (err, promotion) {
             if (err) {
-                throw err;
+              return next(err);
             }
             res.json(promotion);
         })
@@ -25,7 +25,7 @@ promoRouter.route('/')
     .post(function (req, res, next) {
         Promotion.create(req.body, function (err, promotion) {
             if (err) {
-                throw err;
+              return next(err);
             }
             console.log('Promotion created');
             var id = promotion._id;
@@ -38,7 +38,7 @@ promoRouter.route('/')
     .delete(function (req, res, next) {
         Promotion.remove({}, function (err, resp) {
             if (err) {
-                throw err;
+              return next(err);
             }
             res.json(resp);
         })
@@ -47,7 +47,7 @@ promoRouter.route('/:promotionId')
     .get(function (req, res, next) {
         Promotion.findById(req.params.promotionId, function (err, promotion) {
             if (err) {
-                throw err;
+              return next(err);
             }
             res.json(promotion);
         })
@@ -59,7 +59,7 @@ promoRouter.route('/:promotionId')
             new: true
         }, function (err, promotion) {
             if (err) {
-                throw err
+              return next(err);
             }
             res.json(promotion);
         });
@@ -67,7 +67,7 @@ promoRouter.route('/:promotionId')
     .delete(function (req, res, next) {
         Promotion.findByIdAndRemove(req.params.promotionId, function (err, resp) {
             if (err) {
-                throw err
+              return next(err);
             }
             res.json(resp);
         });

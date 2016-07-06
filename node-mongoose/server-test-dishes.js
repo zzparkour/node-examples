@@ -48,13 +48,13 @@ db.once('open', function () {
         price:'10.22',
         description: 'test',
         comments: [{
-            rating: 3,
-            comment: 'This is insane',
-            author: 'Matt Daemon'
+          rating: 3,
+          comment: 'This is insane',
+          author: 'Matt Daemon'
         }]
     }, function (err, dish) {
         if (err) {
-            throw err
+          throw err
         }
         console.log('Dish created');
 

@@ -18,7 +18,7 @@ leaderRouter.route('/')
     .get(function (req, res, next) {
         Leadership.find({}, function (err, leader) {
             if (err) {
-                throw err
+              return next(err);
             }
             res.json(leader);
         });
@@ -26,7 +26,7 @@ leaderRouter.route('/')
     .post(function (req, res, next) {
         Leadership.create(req.body, function (err, leader) {
             if (err) {
-                throw err;
+              return next(err);
             }
             console.log('leader created');
             var id = leader._id;
@@ -39,7 +39,7 @@ leaderRouter.route('/')
     .delete(function (req, res, next) {
         Leadership.remove({}, function (err, resp) {
             if (err) {
-                throw err;
+              return next(err);
             }
             res.json(resp);
         });
@@ -48,11 +48,11 @@ leaderRouter.route('/')
 
 leaderRouter.route('/:leadershipId')
     .get(function (req, res, next) {
-        Leadership.findById(req.params.leadershipId, function (err, dish) {
+        Leadership.findById(req.params.leadershipId, function (err, leader) {
             if (err) {
                 throw err;
             }
-            res.json(dish);
+            res.json(leader);
         });
     })
     .put(function (req, res, next) {

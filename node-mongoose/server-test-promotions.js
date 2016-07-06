@@ -33,13 +33,13 @@ db.once('open', function () {
         label: 'New',
         price: '19.99',
         description: 'Featuring...'
-    }, function (err, dish) {
+    }, function (err, promotion) {
         if (err) {
             throw err
         }
         console.log('Promotion created');
 
-        var id = dish._id;
+        var id = promotion._id;
         setTimeout(function () {
             Promotions.findByIdAndUpdate(id, {
                 $set: {
@@ -47,14 +47,13 @@ db.once('open', function () {
                 }
             }, {
                 new: true
-            }).exec(function (err, dish) {
+            }).exec(function (err, promotion) {
                 if (err) {
                     throw err
                 }
                 console.log('Updated Promotion');
-                console.log(dish);
+                console.log(promotion);
                 db.close();
-              
             });
         }, 3000);
     });

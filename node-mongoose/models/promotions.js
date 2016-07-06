@@ -39,9 +39,8 @@ var promotionSchema = new Schema({
         type: String,
         required: true
     }
-});
+},{timestamps:true});
 
 var Promotions = mongoose.model('Promotion', promotionSchema);
 
 module.exports = Promotions;
-

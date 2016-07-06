@@ -27,7 +27,7 @@ db.once('open', function () {
         description: 'test'
     }, function (err, leader) {
         if (err) {
-            throw err
+          throw err
         }
         console.log('Leadership created');
 
@@ -49,5 +49,4 @@ db.once('open', function () {
             });
         }, 3000);
     });
-
 });

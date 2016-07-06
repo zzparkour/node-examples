@@ -69,7 +69,7 @@ var dishSchema = new Schema({
         required: true
     },
     comments: [commentSchema]
-});
+},{timestamps:true});
 
 
 var Dishes = mongoose.model('Dish', dishSchema);
